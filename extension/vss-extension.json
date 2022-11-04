@@ -1,0 +1,188 @@
+{
+	"manifestVersion": 1,
+	"id": "BARSI",
+	"version": "0.4.0",
+	"publisher": "Reafar",
+	"name": "Builds/releases summary info widget extension",
+	"description": "Builds/releases summary info widget extension",
+	"public": false,
+	"icons": {
+		"default": "static/img/logo.png"
+	},
+	"categories": [
+		"Build and release"
+	],
+	"tags": [
+		"Status",
+		"Build",
+		"Release",
+		"Health",
+		"Visualize"
+	],
+	"content": {
+		"details": {
+			"path": "Overview.md"
+		},
+		"license": {
+			"path": "mp_terms.md"
+		}
+	},
+	"repository": {
+		"type": "git",
+		"uri": "https://github.com/Reafar/builds-and-releases-summary-info"
+	},
+	"branding": {
+		"color": "rgb(51,65,133)",
+		"theme": "dark"
+	},
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services.Cloud"
+		},
+		{
+			"id": "Microsoft.TeamFoundation.Server",
+			"version": "[15.3,)"
+		}
+	],
+	"contributions": [
+		{
+			"id": "BARSI-Builds-Widget",
+			"type": "ms.vss-dashboards-web.widget",
+			"targets": [
+				"ms.vss-dashboards-web.widget-catalog",
+				".BARSI-Builds-Widget-Configuration"
+			],
+			"properties": {
+				"name": "Builds Summary Info",
+				"description": "Builds Summary Info widget",
+				"previewImageUrl": "static/img/BARSI-Builds.png",
+				"uri": "static/builds.html",
+				"isNameConfigurable": true,
+				"supportedSizes": [
+					{
+						"rowSpan": 2,
+						"columnSpan": 4
+					},
+					{
+						"rowSpan": 3,
+						"columnSpan": 4
+					},
+					{
+						"rowSpan": 4,
+						"columnSpan": 4
+					}
+				],
+				"supportedScopes": [
+					"project_team"
+				]
+			}
+		},
+		{
+			"id": "BARSI-Builds-Widget-Configuration",
+			"type": "ms.vss-dashboards-web.widget-configuration",
+			"targets": [
+				"ms.vss-dashboards-web.widget-configuration"
+			],
+			"properties": {
+				"name": "Builds Summary Info Configuration",
+				"description": "Builds Summary Info Configuration widget",
+				"uri": "static/builds-configuration.html"
+			}
+		},
+		{
+			"id": "BARSI-Releases-Widget",
+			"type": "ms.vss-dashboards-web.widget",
+			"targets": [
+				"ms.vss-dashboards-web.widget-catalog",
+				".BARSI-Releases-Widget-Configuration"
+			],
+			"includes": [
+				"ms.vss-releaseManagement-web.release-service-data-external"
+			],
+			"properties": {
+				"name": "Releases Summary Info name",
+				"description": "Releases Summary Info widget description",
+				"previewImageUrl": "static/img/BARSI-Releases.png",
+				"uri": "static/releases.html",
+				"isNameConfigurable": true,
+				"supportedSizes": [
+					{
+						"rowSpan": 2,
+						"columnSpan": 4
+					},
+					{
+						"rowSpan": 3,
+						"columnSpan": 4
+					},
+					{
+						"rowSpan": 4,
+						"columnSpan": 4
+					}
+				],
+				"supportedScopes": [
+					"project_team"
+				]
+			}
+		},
+		{
+			"id": "BARSI-Releases-Widget-Configuration",
+			"type": "ms.vss-dashboards-web.widget-configuration",
+			"targets": [
+				"ms.vss-dashboards-web.widget-configuration"
+			],
+			"properties": {
+				"name": "Releases Summary Info Widget Configuration",
+				"description": "Releases Summary Info widget Configuration",
+				"uri": "static/releases-configuration.html"
+			}
+		}
+	],
+	"files": [
+		{
+			"path": "static/builds.html",
+			"addressable": true
+		},
+		{
+			"path": "static/releases.html",
+			"addressable": true
+		},
+		{
+			"path": "static/builds-configuration.html",
+			"addressable": true
+		},
+		{
+			"path": "static/releases-configuration.html",
+			"addressable": true
+		},
+		{
+			"path": "static/css",
+			"addressable": true
+		},
+		{
+			"path": "static/img",
+			"addressable": true
+		},
+		{
+			"path": "dist",
+			"addressable": true
+		},
+		{
+			"path": "ThirdPartyNotices.txt",
+			"addressable": true
+		},
+		{
+			"path": "node_modules/vss-web-extension-sdk/lib",
+			"addressable": true,
+			"packagePath": "lib"
+		},
+		{
+			"path": "node_modules/applicationinsights-js/dist",
+			"addressable": true,
+			"packagePath": "lib"
+		}
+	],
+	"scopes": [
+		"vso.build",
+		"vso.release"
+	]
+}

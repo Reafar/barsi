@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Releases</title>
+    <link href="css/releases.css" rel="stylesheet" />
+    <script src="../lib/VSS.SDK.js"></script>
+    <script src="../lib/ai.0.js"></script>
+</head>
+
+<body>
+    <div>
+        <div class="header">
+            <div id="title"></div>
+            <button id="refresh-button">Refresh</button>
+        </div>
+        <div id='header-container'>
+            <div class="header-row">
+                <div class="header-title">Title</div>
+                <div class="header-status">Status</div>
+                <div class="header-result">Result</div>
+            </div>
+        </div>
+        <div id='data-container'></div>
+    </div>
+    <script type="text/javascript">
+        VSS.init(
+            {
+                explicitNotifyLoaded: true,
+                setupModuleLoader: true,
+                usePlatformScripts: true,
+                usePlatformStyles: true
+            });
+        VSS.ready(function () {
+            require(["dist/releaseswidget"], function (overview) { });
+        });
+    </script>
+</body>
+
+</html>

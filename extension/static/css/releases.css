@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+#title {
+    font-size: 20px;
+    font-weight: 400;
+    width: 70vw;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+#refresh-button {
+    font-size: 17px;
+    height: 35px;
+    width: 130px;
+    text-align: center;
+    padding: 5px;
+    user-select: none;
+    border: none;
+    background-color: white;
+}
+
+#refresh-button:hover {
+    background-color: rgb(226, 224, 224);
+    cursor: pointer;
+}
+
+#refresh-button:active {
+    background-color: lightgrey;
+}
+
+#data-container {
+    overflow: auto;
+    height: 79vh;
+}
+
+.definition-not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.header-row {
+    display: flex;
+    height: 40px;
+    padding-left: 5px;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    width: 58vw;
+    padding: 5px;
+}
+
+.header-status {
+    display: flex;
+    align-items: center;
+    width: 15vw;
+}
+
+.header-result {
+    display: flex;
+    align-items: center;
+    width: 15vw;
+}
+
+.row-container {
+    display: flex;
+    height: 40px;
+    padding-left: 5px;
+}
+
+.row-container:hover {
+    background-color: rgb(226, 224, 224);
+}
+
+.title-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 58vw;
+    padding-left: 5px;
+}
+
+.common-info-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 58vw;
+    padding-left: 5px;
+}
+
+.links-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.links-container div:not(:first-child) {
+    padding-left: 5px;
+}
+
+.definition-link {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.result-container {
+    display: flex;
+    align-items: center;
+    width: 15vw;
+}
+
+.result-container span {
+    padding-left: 5px;
+}
+
+.status-container {
+    display: flex;
+    align-items: center;
+    width: 20vw;
+}
+
+.status-container span {
+    padding-left: 5px;
+}
+
+.circle {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+.result-draft {
+    background-color: yellow;
+}
+
+.result-active {
+    background-color: green;
+}
+
+.result-abandoned {
+    background-color: red;
+}
+
+.result-undefined {
+    background-color: gray;
+}
+
+.status-all {
+    background-color: white;
+}
+
+.status-failed {
+    background-color: red;
+}
+
+.status-notdeployed {
+    background-color: rgb(27, 27, 27);
+}
+
+.status-inprogress {
+    background-color: blue;
+}
+
+.status-partiallysucceeded {
+    background-color: orange;
+}
+
+.status-succeeded {
+    background-color: green;
+}
+
+.status-undefined {
+    background-color: gray;
+}

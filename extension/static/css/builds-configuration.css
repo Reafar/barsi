@@ -1,0 +1,31 @@
+.container {
+    height: 300px;
+}
+
+.multyselect-hide {
+    display: none;
+}
+
+.multyselect-control {
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    font-size: 15px;
+    padding: 3px 3px 3px 5px;
+}
+
+.multyselect-data-container {
+    font-size: 15px;
+    border: 1px solid black;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+.multyselect-data-row {
+    display: block;
+    padding: 5px;
+}
+
+.multyselect-data-row:hover {
+    background-color: rgb(226, 224, 224);
+}
