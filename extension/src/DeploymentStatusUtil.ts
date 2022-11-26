@@ -1,4 +1,4 @@
-﻿import { DeploymentAttempt, DeploymentOperationStatus, DeploymentStatus, Release } from "ReleaseManagement/Core/Contracts";
+﻿import { DeploymentStatus, Release } from "ReleaseManagement/Core/Contracts";
 
 export class DeploymentStatusUtil {
 

@@ -1,7 +1,4 @@
-﻿import TFS_RM_Contracts = require("ReleaseManagement/Core/Contracts");
-import TFS_RM_Client = require("ReleaseManagement/Core/RestClient");
-import Controls = require("VSS/Controls");
-import Combos = require("VSS/Controls/Combos");
+﻿import TFS_RM_Client = require("ReleaseManagement/Core/RestClient");
 import { IMultySelectData, MultySelect } from "./MultySelect";
 
 VSS.require(["TFS/Dashboards/WidgetHelpers"], (WidgetHelpers) => {
