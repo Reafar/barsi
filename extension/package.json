@@ -32,7 +32,6 @@
 	},
 	"dependencies": {
 		"@types/jquery": "^3.2.18",
-		"vss-web-extension-sdk": "^5.127.0",
-		"applicationinsights-js": "^1.0.14"
+		"vss-web-extension-sdk": "^5.127.0"
 	}
 }

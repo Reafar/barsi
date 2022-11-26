@@ -1,7 +1,7 @@
 {
 	"manifestVersion": 1,
 	"id": "BARSI",
-	"version": "0.4.0",
+	"version": "0.4.3",
 	"publisher": "Reafar",
 	"name": "Builds/releases summary info widget extension",
 	"description": "Builds/releases summary info widget extension",
