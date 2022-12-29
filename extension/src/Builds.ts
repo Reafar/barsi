@@ -50,12 +50,12 @@ export class BuildsWidget {
 			definitions = definitions.filter((def) => customSettings.selectedDefinitionIds.indexOf(def.id) !== -1);
 		}
 		const ids = definitions.map((value) => value.id);
-		const builds = await buildClient.getBuilds(context.project.name, ids);
+		const builds = await buildClient.getBuilds(context.project.name, ids, null, null, null, null,
+			null, null, null, null, null, null, null, null, 1);
 
 		const result = definitions.map((def) => {
 			const buildsForDef = builds
-				.filter((item) => item.definition.id === def.id)
-				.sort((a, b) => a.startTime > b.startTime ? -1 : a.startTime < b.startTime ? 1 : 0);
+				.filter((item) => item.definition.id === def.id);
 			return {
 				definition: def,
 				builds: buildsForDef,
@@ -84,23 +84,9 @@ export class BuildsWidget {
 				.appendTo(dataContainer);
 		} else {
 			const sortData = data.sort((defA, defB) => {
-				let buildAResult = -1;
-				if (defA.builds.length > 0) {
-					if (defA.builds[0].result === BuildResult.Succeeded) {
-						buildAResult = -100;
-					} else {
-						buildAResult = defA.builds[0].result;
-					}
-				}
+				const buildAResult = defA.builds.length > 0 ? defA.builds[0].result : -1;
 
-				let buildBResult = -1;
-				if (defB.builds.length > 0) {
-					if (defB.builds[0].result === BuildResult.Succeeded) {
-						buildBResult = -100;
-					} else {
-						buildBResult = defB.builds[0].result;
-					}
-				}
+				const buildBResult = defB.builds.length > 0 ? defB.builds[0].result : -1;
 
 				return buildAResult > buildBResult ? -1 : buildAResult < buildBResult ? 1 : 0;
 			});

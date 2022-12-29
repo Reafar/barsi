@@ -92,25 +92,9 @@ export class ReleasesWidget {
 				.appendTo(dataContainer);
 		} else {
 			const sortData = data.sort((defA, defB) => {
-				let releasAStatus = -1;
-				if (defA.releases.length > 0) {
-					const statusA = DeploymentStatusUtil.getStatus(defA.releases[0]);
-					if (statusA === DeploymentStatus.Succeeded) {
-						releasAStatus = -100;
-					} else {
-						releasAStatus = statusA;
-					}
-				}
+				const releasAStatus = defA.releases.length > 0 ? DeploymentStatusUtil.getStatus(defA.releases[0]) : -1;
 
-				let releasBStatus = -1;
-				if (defB.releases.length > 0) {
-					const statusB = DeploymentStatusUtil.getStatus(defB.releases[0]);
-					if (statusB === DeploymentStatus.Succeeded) {
-						releasBStatus = -100;
-					} else {
-						releasBStatus = statusB;
-					}
-				}
+				const releasBStatus = defB.releases.length > 0 ? DeploymentStatusUtil.getStatus(defB.releases[0]) : -1;
 
 				return releasAStatus > releasBStatus ? -1 : releasAStatus < releasBStatus ? 1 : 0;
 			});
