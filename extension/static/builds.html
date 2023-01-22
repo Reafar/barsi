@@ -9,19 +9,19 @@
 </head>
 
 <body>
-    <div>
-        <div class="header">
-            <div id="title"></div>
+    <div class="main-wrapper">
+        <div class="header-wrapper">
+            <span class="header-title">Сборки</span>
             <button id="refresh-button">Refresh</button>
         </div>
-        <div id='header-container'>
-            <div class="header-row">
-                <div class="header-title">Title</div>
-                <div class="header-status">Status</div>
-                <div class="header-result">Result</div>
+        <div class="data-wrapper">
+            <div class="title-container">
+                <span>Pipeline</span>
+                <span>Last run</span>
+            </div>
+            <div class="data-container">
             </div>
         </div>
-        <div id='data-container'></div>
     </div>
     <script type="text/javascript">
         VSS.init(
