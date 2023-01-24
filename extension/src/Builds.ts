@@ -2,7 +2,7 @@
 import VSS_Service = require("VSS/Service");
 import { Build, BuildDefinitionReference, BuildReason, BuildResult, BuildStatus } from "TFS/Build/Contracts";
 import TFS_Build_Extension_Contracts = require("TFS/Build/ExtensionContracts");
-import BuildStatusInfo from "./Models/BuildStatusInfo";
+import StatusInfo from "./Models/StatusInfo";
 import Utils from "./Utils";
 
 VSS.require(["TFS/Dashboards/WidgetHelpers"], (WidgetHelpers) => {
@@ -130,7 +130,7 @@ export class BuildsWidget {
 	}
 
 	private generateStatusContainer(status: number, result: number): JQuery<HTMLElement> {
-		const statusInfo = BuildStatusInfo.getStatusInfo(status, result);
+		const statusInfo = StatusInfo.getBuildStatusInfo(status, result);
 		const statusContainerDiv = $("<div/>");
 		statusContainerDiv.addClass("status-container");
 		statusContainerDiv.addClass("parent-tooltip");

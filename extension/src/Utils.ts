@@ -1,5 +1,7 @@
 ﻿import Services_Navigation = require("VSS/SDK/Services/Navigation");
-import BuildStatusInfo from "./Models/BuildStatusInfo";
+import StatusInfo from "./Models/StatusInfo";
+import { DeploymentStatusUtil } from "./DeploymentStatusUtil";
+import { DeploymentStatus } from "ReleaseManagement/Core/Contracts";
 
 export default class Utils {
 
@@ -156,10 +158,27 @@ export default class Utils {
 	}
 
 	public static sortBuildProvider(defA, defB): number {
-		const buildAStatsuInfo = defA.builds.length > 0
-			? BuildStatusInfo.getStatusInfo(defA.builds[0].status, defA.builds[0].result).priority : -1;
-		const buildBStatsuInfo = defB.builds.length > 0
-			? BuildStatusInfo.getStatusInfo(defB.builds[0].status, defB.builds[0].result).priority : -1;
-		return buildAStatsuInfo > buildBStatsuInfo ? -1 : buildAStatsuInfo < buildBStatsuInfo ? 1 : 0;
+		const buildAPriority = defA.builds.length > 0
+			? StatusInfo.getBuildStatusInfo(defA.builds[0].status, defA.builds[0].result).priority : -1;
+		const buildBPriority = defB.builds.length > 0
+			? StatusInfo.getBuildStatusInfo(defB.builds[0].status, defB.builds[0].result).priority : -1;
+		return buildAPriority > buildBPriority ? -1 : buildAPriority < buildBPriority ? 1 : 0;
+	}
+
+	public static sortReleaseProvider(defA, defB): number {
+		let releaseAPriority = -1;
+		if (defA.releases.length > 0) {
+			const release = defA.releases[0];
+			const deploymentStatus: DeploymentStatus = DeploymentStatusUtil.getStatus(release);
+			releaseAPriority = StatusInfo.getReleaseStatusInfo(release.status, deploymentStatus).priority;
+		}
+		let releaseBPriority = -1;
+		if (defB.releases.length > 0) {
+			const release = defB.releases[0];
+			const deploymentStatus: DeploymentStatus = DeploymentStatusUtil.getStatus(release);
+			releaseBPriority = StatusInfo.getReleaseStatusInfo(release.status, deploymentStatus).priority;
+		}
+
+		return releaseAPriority > releaseBPriority ? -1 : releaseAPriority < releaseBPriority ? 1 : 0;
 	}
 }

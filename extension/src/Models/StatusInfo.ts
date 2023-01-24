@@ -1,8 +1,37 @@
+import { DeploymentStatus, ReleaseStatus } from "ReleaseManagement/Core/Contracts";
 import { BuildResult, BuildStatus } from "TFS/Build/Contracts";
 
-export default class BuildStatusInfo {
+export default class StatusInfo {
 
-	public static getStatusInfo(status: number, result: number) {
+	public static getReleaseStatusInfo(status: number, deploymentStatus: number) {
+		switch (status) {
+			case ReleaseStatus.Abandoned:
+				return this.statusInfo.Canceled;
+			case ReleaseStatus.Active:
+				switch (deploymentStatus) {
+					case DeploymentStatus.Failed:
+						return this.statusInfo.Failed;
+					case DeploymentStatus.NotDeployed:
+						return this.statusInfo.Queued;
+					case DeploymentStatus.InProgress:
+						return this.statusInfo.Running;
+					case DeploymentStatus.PartiallySucceeded:
+						return this.statusInfo.Warning;
+					case DeploymentStatus.Succeeded:
+						return this.statusInfo.Success;
+					case DeploymentStatus.All:
+					case DeploymentStatus.Undefined:
+					default:
+						return this.statusInfo.None;
+				}
+			case ReleaseStatus.Draft:
+			case ReleaseStatus.Undefined:
+			default:
+				return this.statusInfo.None;
+		}
+	}
+
+	public static getBuildStatusInfo(status: number, result: number) {
 		switch (status) {
 			case BuildStatus.Cancelling:
 			case BuildStatus.InProgress:
